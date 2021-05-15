@@ -1,5 +1,0 @@
-hubVersionPhase: DEVELOPMENT
-#releaseRepo: #artifactory repo
-#sonarQubeFailPipelineOnFailedQualityGate: false
-#hubFailPipelineOnFailedOpenSourceGovernance: false
-#fortifyTriggers: master

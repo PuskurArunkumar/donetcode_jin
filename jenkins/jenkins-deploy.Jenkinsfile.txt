@@ -1,0 +1,10 @@
+pipelineDotNetClassicContinousIntegration(
+  [
+     propertiesFileName: 'jenkins-deploy.properties',
+     jenkinsJobInitialAgent: 'windows',
+     jenkinsJobTimeoutInMinutes: 600,
+     jenkinsJobTriggerOnPush: true,
+     jenkinsJobTriggerOnMergeRequest: true,
+     jenkinsJobRegEx: '^master$',
+  ]
+)

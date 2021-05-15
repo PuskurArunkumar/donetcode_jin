@@ -1,17 +1,9 @@
-node {
-    /*Jenkinsfile (Scripted Pipeline) for Azure Webapp*/
-    stage('Deploy') {
-        def resourceGroup = 'DevOps'
-        //def webAppName = 'tcs-manulife-as'
-        // login Azure
-        withCredentials([azureServicePrincipal('principal-credentials-id')]) {
-            powershell '''
-               az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
-               az account set -s $AZURE_SUBSCRIPTION_ID
-               az resource list
-            '''   
-        }
-    }
+withCredentials([azureServicePrincipal(credentialsId: 'credentials_id',
+                                    subscriptionIdVariable: 'SUBS_ID',
+                                    clientIdVariable: 'CLIENT_ID',
+                                    clientSecretVariable: 'CLIENT_SECRET',
+                                    tenantIdVariable: 'TENANT_ID')]) {
+    sh 'az login --service-principal -u $CLIENT_ID -p $CLIENT_SECRET -t $TENANT_ID'
 }
 
 
@@ -55,7 +47,23 @@ node {
       }
     }
   } 
-}*/
+}
+
+node {
+    /*Jenkinsfile (Scripted Pipeline) for Azure Webapp*/
+    stage('Deploy') {
+        def resourceGroup = 'DevOps'
+        //def webAppName = 'tcs-manulife-as'
+        // login Azure
+        withCredentials([azureServicePrincipal('principal-credentials-id')]) {
+            powershell '''
+               az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
+               az account set -s $AZURE_SUBSCRIPTION_ID
+               az resource list
+            '''   
+        }
+    }
+} */
 
 
 

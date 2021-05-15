@@ -2,13 +2,13 @@ node {
     /*Jenkinsfile (Scripted Pipeline) for Azure Webapp*/
     stage('Deploy') {
         def resourceGroup = 'DevOps'
-        def webAppName = 'tcs-manulife-as'
+        //def webAppName = 'tcs-manulife-as'
         // login Azure
         withCredentials([azureServicePrincipal('principal-credentials-id')]) {
             powershell '''
                az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
                az account set -s $AZURE_SUBSCRIPTION_ID
-               //az resource list
+               az resource list
             '''   
         }
     }

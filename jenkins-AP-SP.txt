@@ -1,4 +1,4 @@
-node {
+/*node {
     /*Jenkinsfile (Scripted Pipeline) for Azure Webapp*/
     stage('Deploy') {
         def resourceGroup = 'DevOps'
